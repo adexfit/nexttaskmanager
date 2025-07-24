@@ -21,7 +21,7 @@ To run locally:
 1. clone the project
 
 ```bash
-git clone "https://github.com/adexfit/minicommerce.git"
+git clone "https://github.com/adexfit/nexttaskmanager.git"
 
 ```
 
