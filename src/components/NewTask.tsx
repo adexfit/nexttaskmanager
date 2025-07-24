@@ -75,12 +75,16 @@ const NewTask = () => {
           <Check /> <p>Save</p>
         </button>
       </div>
-      <div className="flex">
+      <div className="flex flex-col px-4">
         <textarea
-          className="outline:none mx-4 h-64 w-full rounded border-1 border-gray-300 p-2 text-sm focus:outline-blue-400 dark:border-gray-500"
+          className="outline:none h-64 w-full rounded border-1 border-gray-300 p-2 text-sm focus:outline-blue-400 dark:border-gray-500"
           value={newNote}
           onChange={handleNoteTyping}
+          maxLength={100}
         />
+        <p className="text-[12px] text-gray-400 italic dark:text-gray-200">
+          {200 - newNote.length} characters left
+        </p>
       </div>
       <div className="my-4 w-full flex-col px-4">
         <p className="text-center">

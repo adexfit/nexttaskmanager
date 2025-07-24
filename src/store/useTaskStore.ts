@@ -6,9 +6,11 @@ export const useTaskStore = create<taskState>()(
   persist(
     (set) => ({
       newTaskPage: false,
+      showNewTaskPage: (state) => set({ newTaskPage: state }),
+
       filterOption: "All tasks",
       setFilterOption: (state) => set({ filterOption: state }),
-      showNewTaskPage: (state) => set({ newTaskPage: state }),
+
       tasks: [],
 
       addTask: (task) =>
