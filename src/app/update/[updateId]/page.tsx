@@ -78,8 +78,9 @@ const UpdateTask = () => {
   };
 
   return (
-    <div className="min-h-screen bg-blue-500 px-6 py-8 dark:bg-gray-800">
-      <div className="mx-auto h-[500px] w-full rounded-xl bg-white md:w-2/3 lg:w-1/2 dark:bg-gray-700">
+    <div className="relative min-h-screen bg-[url(/bg.jpg)] bg-cover bg-center px-6 py-8">
+      <div className="absolute inset-0 bg-blue-500/50 dark:bg-gray-800/80"></div>
+      <div className="relative z-10 mx-auto h-auto w-full rounded-xl bg-white md:w-2/3 lg:w-1/2 dark:bg-gray-700">
         <Header />
         <div className="flex flex-col">
           <div className="absolute">
@@ -123,7 +124,7 @@ const UpdateTask = () => {
             </p>
           </div>
           <div className="my-4 w-full flex-col px-4">
-            <p className="text-center">
+            <p className="text-center text-gray-600 dark:text-gray-400">
               Due date:{" "}
               {selectedDate
                 ? ` ${selectedDate.toLocaleDateString()}`

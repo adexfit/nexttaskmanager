@@ -87,7 +87,7 @@ const NewTask = () => {
         </p>
       </div>
       <div className="my-4 w-full flex-col px-4">
-        <p className="text-center">
+        <p className="text-center text-sm text-gray-600 dark:text-gray-200">
           Due date:{" "}
           {selectedDate
             ? `Selected: ${selectedDate.toLocaleDateString()}`

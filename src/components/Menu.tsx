@@ -40,19 +40,19 @@ const Menu = () => {
             className={`absolute mt-1 bg-white ${hiddenDropDown ? "hidden" : "flex"} w-30 flex-col rounded-lg shadow-lg dark:bg-gray-800`}
           >
             <p
-              className="flex h-8 items-center px-3 text-sm text-gray-600 hover:text-blue-600"
+              className="flex h-8 items-center px-3 text-sm text-gray-600 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400"
               onClick={() => setFilterOption("All tasks")}
             >
               All tasks
             </p>
             <p
-              className="flex h-8 items-center px-3 text-sm text-gray-600 hover:text-blue-600"
+              className="flex h-8 items-center px-3 text-sm text-gray-600 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400"
               onClick={() => setFilterOption("completed")}
             >
               Completed
             </p>
             <p
-              className="flex h-8 items-center px-3 text-sm text-gray-600 hover:text-blue-600"
+              className="flex h-8 items-center px-3 text-sm text-gray-600 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400"
               onClick={() => setFilterOption("pending")}
             >
               Pending
