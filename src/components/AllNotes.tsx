@@ -28,10 +28,6 @@ const AllNotes = () => {
     }
   }, [filterOption, setFilterOption, tasks]);
 
-  const handleTaskUpdate = (id: string) => {
-    // removeTask(id);
-  };
-
   const handleMarkDone = (e: BaseSyntheticEvent, id: string) => {
     let initialStatus: string = "";
     tasks.map((a) => (a.id == id ? (initialStatus = a.status) : ""));
@@ -91,7 +87,7 @@ const AllNotes = () => {
                 <Trash2 className="cursor-pointer text-red-400 dark:text-red-300" />
               </button>
               <Link href={`/update/${task.id}`}>
-                <button onClick={() => handleTaskUpdate(task.id)}>
+                <button>
                   <SquarePen className="cursor-pointer text-blue-400 dark:text-blue-300" />
                 </button>
               </Link>
@@ -101,6 +97,9 @@ const AllNotes = () => {
           {!newTaskPage && <hr className="text-gray-100 dark:text-gray-600" />}
         </div>
       ))}
+      <div className="py-4 text-center text-gray-400 italic dark:text-gray-400">
+        {dataToShow.length == 0 ? <p>No task available</p> : ""}
+      </div>
     </div>
   );
 };
