@@ -16,6 +16,7 @@ const UpdateTask = () => {
   const [newNote, setNewNote] = useState("");
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [error, setError] = useState("");
   const params = useParams();
   const { updateId } = params;
   const router = useRouter();
@@ -41,14 +42,18 @@ const UpdateTask = () => {
     setSelectedDate(dateObj);
   }, []);
 
-  //
-
-  // const handleSaveBackMove = () => {
-  //   showNewTaskPage(false);
-  // };
-
   const handleSaveNote = (e: BaseSyntheticEvent) => {
     e.preventDefault();
+
+    if (!newNote) {
+      setError("A task is required.");
+    } else if (newNote.length < 3) {
+      setError("Task length must be at least 3 characters long.");
+    } else if (selectedDate == null) {
+      setError("Select a due date");
+    } else {
+      setError("");
+    }
 
     if (newNote != "" && selectedDate != null) {
       updateTask(`${updateId}`, {
@@ -119,9 +124,20 @@ const UpdateTask = () => {
               onChange={handleNoteTyping}
               maxLength={100}
             />
-            <p className="text-[12px] text-gray-400 italic dark:text-gray-400">
-              {200 - newNote.length} characters left
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="text-[12px] text-gray-400 italic dark:text-gray-200">
+                {200 - newNote.length} characters left
+              </p>
+              {error && (
+                <p
+                  id="message-error"
+                  className="mt-2 text-sm text-red-600 dark:text-red-300"
+                  role="alert"
+                >
+                  {error}
+                </p>
+              )}
+            </div>
           </div>
           <div className="my-4 w-full flex-col px-4">
             <p className="text-center text-gray-600 dark:text-gray-400">
