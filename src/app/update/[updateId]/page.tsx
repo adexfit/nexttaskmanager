@@ -9,7 +9,6 @@ import Header from "@/components/Header";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
-// import { id } from "date-fns/locale";
 
 const UpdateTask = () => {
   const { showNewTaskPage, tasks, updateTask } = useTaskStore();
@@ -21,13 +20,11 @@ const UpdateTask = () => {
   const { updateId } = params;
   const router = useRouter();
 
-  // console.log(updateId);
-
   useEffect(() => {
     const neededTask: taskObjectType | undefined = tasks.find(
       (item) => item.id == updateId,
     ) as taskObjectType;
-    const { id, title, status, duedate } = neededTask || {};
+    const { title } = neededTask || {};
 
     setNewNote(title);
 
@@ -40,7 +37,7 @@ const UpdateTask = () => {
     );
 
     setSelectedDate(dateObj);
-  }, []);
+  }, [tasks, updateId]);
 
   const handleSaveNote = (e: BaseSyntheticEvent) => {
     e.preventDefault();

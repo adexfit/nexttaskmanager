@@ -33,7 +33,7 @@ This is the url to the deployed app on netlify [Live link](https://stupendous-cu
 
 ## Design approach
 
-The app was designed using two colors. The primary color: rgb(170, 104, 23), i also added the two shades of this color: rgb(255 178 86), rgb(255 178 86). It is responsive on all screens. The cart was kept on the navigation even on mobile screens to ensure a good user experience.
+The app was designed using a single blue color. It has a dark mode feature and it is responsive on all screens.
 
 ## Tools & Techniques
 

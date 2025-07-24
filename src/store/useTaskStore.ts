@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { taskObjectType, taskState } from "@/types/types";
+import { taskState } from "@/types/types";
 
 export const useTaskStore = create<taskState>()(
   persist(
@@ -37,13 +37,3 @@ export const useTaskStore = create<taskState>()(
     },
   ),
 );
-
-// replaceData: (newTask) => set(() => ({ tasks: newTask })),
-
-// updateData: (key, value) =>
-//   set((state) => ({
-//     tasks: { ...state.tasks, [key]: value },
-//   })),
-
-// reset: () => set(() => ({ tasks: [] })),
-// updateData: (key: string, value: any) => void;

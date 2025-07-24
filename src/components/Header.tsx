@@ -1,5 +1,4 @@
 import ThemeSwitch from "./ThemeSwitch";
-import { useState } from "react";
 
 const Header = () => {
   return (

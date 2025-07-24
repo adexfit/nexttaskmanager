@@ -3,10 +3,9 @@ import { Plus } from "lucide-react";
 import { useTaskStore } from "@/store/useTaskStore";
 
 const Menu = () => {
-  const [hiddenDropDown, setHiddenDropDown] = useState<Boolean>(true);
-  const { showNewTaskPage, newTaskPage } = useTaskStore();
+  const [hiddenDropDown, setHiddenDropDown] = useState<boolean>(true);
+  const { showNewTaskPage } = useTaskStore();
   const { tasks, filterOption, setFilterOption } = useTaskStore();
-  const [selectedValue, setSelectedValue] = useState(filterOption);
 
   const handleDropDown = () => {
     setHiddenDropDown((prev) => {

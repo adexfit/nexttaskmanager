@@ -2,12 +2,12 @@
 import { useTaskStore } from "@/store/useTaskStore";
 import { ArrowLeft, Check } from "lucide-react";
 import { BaseSyntheticEvent, useState } from "react";
-import { taskObjectType } from "@/types/types";
+// import { taskObjectType } from "@/types/types";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
 
 const NewTask = () => {
-  const { showNewTaskPage, newTaskPage } = useTaskStore();
+  const { showNewTaskPage } = useTaskStore();
   const [newNote, setNewNote] = useState("");
   const { addTask } = useTaskStore();
   const [selectedDate, setSelectedDate] = useState<Date>();
