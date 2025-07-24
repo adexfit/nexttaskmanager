@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Project Overview
 
-## Getting Started
+This is a task manager app that allow users add their tasks and due dates. It has all the CRUD functionalities implemented.
 
-First, run the development server:
+To run locally:
+
+1. clone the project
+
+```bash
+git clone "https://github.com/adexfit/minicommerce.git"
+
+```
+
+2. Install dependencies
+
+```bash
+npm install
+
+```
+
+3. start server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment on Netlify
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This is the url to the deployed app on netlify [Live link](https://stupendous-cuchufli-cac44d.netlify.app/) for more details.
 
-## Learn More
+## Design approach
 
-To learn more about Next.js, take a look at the following resources:
+The app was designed using two colors. The primary color: rgb(170, 104, 23), i also added the two shades of this color: rgb(255 178 86), rgb(255 178 86). It is responsive on all screens. The cart was kept on the navigation even on mobile screens to ensure a good user experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tools & Techniques
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Next js 15
+- Tailwind Css for styling
+- Zustand for state management and storage
 
-## Deploy on Vercel
+## Techniques
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- This app has no backend, all states are stored and persisted in zustand store.
+- Conditional rendering is used to swap between components instead of multiple pages. Only the update page has a route.
