@@ -1,6 +1,20 @@
 ## Project Overview
 
-This is a task manager app that allow users add their tasks and due dates. It has all the CRUD functionalities implemented.
+This is a task manager app (created using next js 15) that allow users add their tasks and due dates. It has all the CRUD functionalities implemented.
+
+## Features
+
+- CRUD features without backend
+- Mark task as 'done'
+- Filter tasks
+- Persisted all states
+- Light and Dark mode
+
+## Tools
+
+- Next js 15
+- Tailwind Css for styling
+- Zustand for state management and storage
 
 To run locally:
 
@@ -29,17 +43,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deployment on Netlify
 
-This is the url to the deployed app on netlify [Live link](https://stupendous-cuchufli-cac44d.netlify.app/) for more details.
+This is the url to the deployed app on netlify [Live link](https://adextaskmanager.netlify.app/) for more details.
 
 ## Design approach
 
 The app was designed using a single blue color. It has a dark mode feature and it is responsive on all screens.
-
-## Tools & Techniques
-
-- Next js 15
-- Tailwind Css for styling
-- Zustand for state management and storage
 
 ## Techniques
 
