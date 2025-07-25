@@ -4,17 +4,17 @@ import { Trash2, SquarePen } from "lucide-react";
 import { BaseSyntheticEvent, useState, useEffect } from "react";
 import { taskObjectType } from "@/types/types";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const AllNotes = () => {
-  const {
-    tasks,
-    removeTask,
-    updateTask,
-    filterOption,
-    setFilterOption,
-    newTaskPage,
-  } = useTaskStore();
+  const tasks = useTaskStore((state) => state.tasks);
+  const updateTask = useTaskStore((state) => state.updateTask);
+  const removeTask = useTaskStore((state) => state.removeTask);
+  const filterOption = useTaskStore((state) => state.filterOption);
+  const setFilterOption = useTaskStore((state) => state.setFilterOption);
+  const newTaskPage = useTaskStore((state) => state.newTaskPage);
   const [dataToShow, setDataToShow] = useState<taskObjectType[]>(tasks);
+  const deleteUpdateNotification = () => toast("Task deleted successfully");
 
   useEffect(() => {
     if (filterOption == "All tasks") {
@@ -37,6 +37,11 @@ const AllNotes = () => {
     } else {
       updateTask(id, { status: "pending" });
     }
+  };
+
+  const handleDeleteTask = (id: string) => {
+    removeTask(id);
+    deleteUpdateNotification();
   };
 
   return (
@@ -84,7 +89,7 @@ const AllNotes = () => {
 
             <div className="flex justify-between gap-1 md:w-1/6">
               <button
-                onClick={() => removeTask(task.id)}
+                onClick={() => handleDeleteTask(task.id)}
                 className="hidden md:flex"
               >
                 <Trash2 className="cursor-pointer text-red-400 dark:text-red-300" />

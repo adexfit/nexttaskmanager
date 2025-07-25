@@ -9,10 +9,13 @@ import Header from "@/components/Header";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const UpdateTask = () => {
-  const { showNewTaskPage, tasks, updateTask, removeTask } = useTaskStore();
+  const showNewTaskPage = useTaskStore((state) => state.showNewTaskPage);
+  const tasks = useTaskStore((state) => state.tasks);
+  const updateTask = useTaskStore((state) => state.updateTask);
+  const removeTask = useTaskStore((state) => state.removeTask);
   const [newNote, setNewNote] = useState("");
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -20,7 +23,8 @@ const UpdateTask = () => {
   const params = useParams();
   const { updateId } = params;
   const router = useRouter();
-  const successfulUpdate = () => toast("Task updated successfully");
+  const successfulUpdateNotice = () => toast("Task updated successfully");
+  const deleteUpdateNotice = () => toast("Task deleted successfully");
 
   useEffect(() => {
     const neededTask: taskObjectType | undefined = tasks.find(
@@ -40,6 +44,10 @@ const UpdateTask = () => {
 
     setSelectedDate(dateObj);
   }, [tasks, updateId]);
+
+  const moveToHome = () => {
+    router.push("/");
+  };
 
   const handleSaveNote = (e: BaseSyntheticEvent) => {
     e.preventDefault();
@@ -63,15 +71,14 @@ const UpdateTask = () => {
           day: "numeric",
         }),
       });
-
-      successfulUpdate;
     } else {
       return;
     }
 
     setNewNote("");
     showNewTaskPage(false);
-    router.push("/");
+    successfulUpdateNotice();
+    setTimeout(moveToHome, 1500);
   };
 
   const handleNoteTyping = (e: BaseSyntheticEvent) => {
@@ -86,7 +93,8 @@ const UpdateTask = () => {
 
   const handleDeleteTask = () => {
     removeTask(`${updateId}`);
-    router.push("/");
+    deleteUpdateNotice();
+    setTimeout(moveToHome, 1500);
   };
 
   return (
@@ -94,8 +102,8 @@ const UpdateTask = () => {
       <div className="absolute inset-0 bg-blue-500/50 dark:bg-gray-800/80"></div>
       <div className="relative z-10 mx-auto h-auto w-full rounded-xl bg-white md:w-2/3 lg:w-1/2 dark:bg-gray-800">
         <Header />
+        <ToastContainer />
         <div className="flex flex-col">
-          <ToastContainer />
           <div className="absolute">
             <DayPicker
               mode="single"

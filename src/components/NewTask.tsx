@@ -4,14 +4,16 @@ import { ArrowLeft, Check } from "lucide-react";
 import { BaseSyntheticEvent, useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
+import { toast } from "react-toastify";
 
 const NewTask = () => {
-  const { showNewTaskPage } = useTaskStore();
+  const showNewTaskPage = useTaskStore((state) => state.showNewTaskPage);
   const [newNote, setNewNote] = useState("");
   const { addTask } = useTaskStore();
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [error, setError] = useState("");
+  const createNotification = () => toast("Task created successfully");
 
   const handleSaveBackMove = () => {
     showNewTaskPage(false);
@@ -43,7 +45,7 @@ const NewTask = () => {
     } else {
       return;
     }
-
+    createNotification();
     setNewNote("");
     showNewTaskPage(false);
   };

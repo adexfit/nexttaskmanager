@@ -4,8 +4,10 @@ import { useTaskStore } from "@/store/useTaskStore";
 
 const Menu = () => {
   const [hiddenDropDown, setHiddenDropDown] = useState<boolean>(true);
-  const { showNewTaskPage } = useTaskStore();
-  const { tasks, filterOption, setFilterOption } = useTaskStore();
+  const showNewTaskPage = useTaskStore((state) => state.showNewTaskPage);
+  const filterOption = useTaskStore((state) => state.filterOption);
+  const setFilterOption = useTaskStore((state) => state.setFilterOption);
+  const tasks = useTaskStore((state) => state.tasks);
 
   const handleDropDown = () => {
     setHiddenDropDown((prev) => {
