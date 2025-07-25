@@ -1,18 +1,14 @@
 "use client";
 
 import Header from "@/components/Header";
-import { useTheme } from "next-themes";
 import Menu from "@/components/Menu";
 import { useTaskStore } from "@/store/useTaskStore";
 import NewTask from "@/components/NewTask";
 import AllNotes from "@/components/AllNotes";
-// import UpdateTask from "@/components/UpdateTask";
 
 export default function Home() {
-  const { theme } = useTheme();
   const { newTaskPage } = useTaskStore();
 
-  console.log(theme);
   return (
     <div className="relative min-h-screen bg-[url(/bg.jpg)] bg-cover bg-center px-2 py-8">
       <div className="absolute inset-0 bg-blue-500/50 dark:bg-gray-800/80"></div>

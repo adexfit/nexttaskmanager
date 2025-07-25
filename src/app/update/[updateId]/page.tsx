@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
 
 const UpdateTask = () => {
   const { showNewTaskPage, tasks, updateTask, removeTask } = useTaskStore();
@@ -19,6 +20,7 @@ const UpdateTask = () => {
   const params = useParams();
   const { updateId } = params;
   const router = useRouter();
+  const successfulUpdate = () => toast("Task updated successfully");
 
   useEffect(() => {
     const neededTask: taskObjectType | undefined = tasks.find(
@@ -61,12 +63,15 @@ const UpdateTask = () => {
           day: "numeric",
         }),
       });
+
+      successfulUpdate;
     } else {
       return;
     }
-    router.push("/");
+
     setNewNote("");
     showNewTaskPage(false);
+    router.push("/");
   };
 
   const handleNoteTyping = (e: BaseSyntheticEvent) => {
@@ -90,6 +95,7 @@ const UpdateTask = () => {
       <div className="relative z-10 mx-auto h-auto w-full rounded-xl bg-white md:w-2/3 lg:w-1/2 dark:bg-gray-800">
         <Header />
         <div className="flex flex-col">
+          <ToastContainer />
           <div className="absolute">
             <DayPicker
               mode="single"
@@ -128,6 +134,7 @@ const UpdateTask = () => {
               value={newNote}
               onChange={handleNoteTyping}
               maxLength={100}
+              id="updatetextarea"
             />
             <div className="flex items-center justify-between">
               <p className="text-[12px] text-gray-400 italic dark:text-gray-200">

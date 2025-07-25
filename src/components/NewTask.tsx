@@ -92,6 +92,7 @@ const NewTask = () => {
           value={newNote}
           onChange={handleNoteTyping}
           maxLength={100}
+          id="updatetextarea"
         />
         <div className="flex items-center justify-between">
           <p className="text-[12px] text-gray-400 italic dark:text-gray-200">
