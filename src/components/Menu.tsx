@@ -1,18 +1,19 @@
-import { useState } from "react";
 import { Plus } from "lucide-react";
 import { useTaskStore } from "@/store/useTaskStore";
 
 const Menu = () => {
-  const [hiddenDropDown, setHiddenDropDown] = useState<boolean>(true);
+  const hideFilterDropdown = useTaskStore((state) => state.hideFilterDropdown);
+  const dropdownRef = useTaskStore((state) => state.dropdownRef);
+  const setHideFilterDropdown = useTaskStore(
+    (state) => state.setHideFilterDropdown,
+  );
   const showNewTaskPage = useTaskStore((state) => state.showNewTaskPage);
   const filterOption = useTaskStore((state) => state.filterOption);
   const setFilterOption = useTaskStore((state) => state.setFilterOption);
   const tasks = useTaskStore((state) => state.tasks);
 
   const handleDropDown = () => {
-    setHiddenDropDown((prev) => {
-      return !prev;
-    });
+    setHideFilterDropdown(!hideFilterDropdown);
   };
   return (
     <div>
@@ -21,7 +22,11 @@ const Menu = () => {
           Tasks: {tasks?.length}{" "}
         </p>
 
-        <div className="relative cursor-pointer" onClick={handleDropDown}>
+        <div
+          className="relative cursor-pointer"
+          onClick={handleDropDown}
+          ref={dropdownRef}
+        >
           <button className="flex h-8 cursor-pointer items-center pr-2 pl-3 focus:outline-none">
             <span className="text-sm leading-none">{filterOption}</span>
             <svg
@@ -38,7 +43,7 @@ const Menu = () => {
             </svg>
           </button>
           <div
-            className={`absolute mt-1 bg-white ${hiddenDropDown ? "hidden" : "flex"} w-30 flex-col gap-4 rounded-lg py-3 shadow-lg dark:bg-gray-700`}
+            className={`absolute mt-1 bg-white ${hideFilterDropdown ? "hidden" : "flex"} w-30 flex-col gap-4 rounded-lg py-3 shadow-lg dark:bg-gray-700`}
           >
             <p
               className="flex h-8 items-center px-3 text-lg text-gray-600 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400"

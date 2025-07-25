@@ -7,6 +7,10 @@ export const useTaskStore = create<taskState>()(
     (set) => ({
       newTaskPage: false,
       showNewTaskPage: (state) => set({ newTaskPage: state }),
+      dropdownRef: null,
+      setDropdownRef: (ref) => set({ dropdownRef: ref }),
+      hideFilterDropdown: true,
+      setHideFilterDropdown: (state) => set({ hideFilterDropdown: state }),
 
       filterOption: "All tasks",
       setFilterOption: (state) => set({ filterOption: state }),
@@ -34,6 +38,20 @@ export const useTaskStore = create<taskState>()(
     }),
     {
       name: "taskjson-storage",
+      partialize: (state) => ({
+        newTaskPage: state.newTaskPage,
+        showNewTaskPage: state.showNewTaskPage,
+        setDropdownRef: state.setDropdownRef,
+        hideFilterDropdown: state.hideFilterDropdown,
+        setHideFilterDropdown: state.setHideFilterDropdown,
+        filterOption: state.filterOption,
+        setFilterOption: state.setFilterOption,
+        tasks: state.tasks,
+        addTask: state.addTask,
+        updateTask: state.updateTask,
+        removeTask: state.removeTask,
+        clearTasks: state.clearTasks,
+      }),
     },
   ),
 );

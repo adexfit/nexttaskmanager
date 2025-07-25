@@ -72,11 +72,8 @@ const AllNotes = () => {
               >
                 status: {task.status}
               </p>
-              <div className="flex items-center pl-7 text-[12px] italic">
-                <span className="text-gray-400 dark:text-white">
-                  Due date:{" "}
-                </span>
-
+              <div className="flex items-center pl-7 text-[12px] text-gray-500 italic dark:text-gray-400">
+                Due date:{" "}
                 {task.duedate instanceof Date
                   ? task.duedate.toLocaleDateString("en-US", {
                       year: "numeric",

@@ -6,9 +6,37 @@ import { useTaskStore } from "@/store/useTaskStore";
 import NewTask from "@/components/NewTask";
 import AllNotes from "@/components/AllNotes";
 import { ToastContainer } from "react-toastify";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
   const newTaskPage = useTaskStore((state) => state.newTaskPage);
+  const dropdownRef = useRef<HTMLDivElement>(
+    null,
+  ) as React.RefObject<HTMLDivElement>;
+  const setDropdownRef = useTaskStore((state) => state.setDropdownRef);
+  const setHideFilterDropdown = useTaskStore(
+    (state) => state.setHideFilterDropdown,
+  );
+
+  useEffect(() => {
+    setDropdownRef(dropdownRef);
+  }, [setDropdownRef]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setHideFilterDropdown(true);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="relative min-h-screen bg-[url(/bg.jpg)] bg-cover bg-center px-2 py-2 md:py-8">

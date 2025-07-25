@@ -1,3 +1,5 @@
+import type { RefObject } from "react";
+
 export type taskObjectType = {
   id: string;
   title: string;
@@ -7,6 +9,10 @@ export type taskObjectType = {
 
 export type taskState = {
   newTaskPage: boolean;
+  dropdownRef: RefObject<HTMLDivElement> | null;
+  setDropdownRef: (ref: RefObject<HTMLDivElement>) => void;
+  hideFilterDropdown: boolean;
+  setHideFilterDropdown: (state: boolean) => void;
   filterOption: string;
   setFilterOption: (wanted: string) => void;
   showNewTaskPage: (state: boolean) => void;
