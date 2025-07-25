@@ -82,8 +82,11 @@ const AllNotes = () => {
               </div>
             </div>
 
-            <div className="flex w-1/3 justify-between gap-0.5 md:w-1/6">
-              <button onClick={() => removeTask(task.id)}>
+            <div className="flex justify-between gap-1 md:w-1/6">
+              <button
+                onClick={() => removeTask(task.id)}
+                className="hidden md:flex"
+              >
                 <Trash2 className="cursor-pointer text-red-400 dark:text-red-300" />
               </button>
               <Link href={`/update/${task.id}`}>
@@ -98,7 +101,7 @@ const AllNotes = () => {
         </div>
       ))}
       <div className="py-4 text-center text-gray-400 italic dark:text-gray-400">
-        {dataToShow.length == 0 ? <p>No task available</p> : ""}
+        {dataToShow?.length == 0 ? <p>No task available</p> : ""}
       </div>
     </div>
   );

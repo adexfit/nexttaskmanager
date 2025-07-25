@@ -16,7 +16,7 @@ const Menu = () => {
     <div>
       <div className="mt-2 mb-2 flex items-center justify-between px-6">
         <p className="text-blue-600 dark:text-blue-200">
-          Tasks: {tasks.length}{" "}
+          Tasks: {tasks?.length}{" "}
         </p>
 
         <div className="relative cursor-pointer" onClick={handleDropDown}>

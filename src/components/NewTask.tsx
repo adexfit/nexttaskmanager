@@ -95,7 +95,7 @@ const NewTask = () => {
         />
         <div className="flex items-center justify-between">
           <p className="text-[12px] text-gray-400 italic dark:text-gray-200">
-            {200 - newNote.length} characters left
+            {200 - newNote?.length} characters left
           </p>
           {error && (
             <p

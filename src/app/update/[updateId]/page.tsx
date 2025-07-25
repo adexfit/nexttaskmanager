@@ -1,6 +1,6 @@
 "use client";
 import { useTaskStore } from "@/store/useTaskStore";
-import { ArrowLeft, Check } from "lucide-react";
+import { ArrowLeft, Check, Trash2 } from "lucide-react";
 import { BaseSyntheticEvent, useState } from "react";
 import { taskObjectType } from "@/types/types";
 import { DayPicker } from "react-day-picker";
@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 const UpdateTask = () => {
-  const { showNewTaskPage, tasks, updateTask } = useTaskStore();
+  const { showNewTaskPage, tasks, updateTask, removeTask } = useTaskStore();
   const [newNote, setNewNote] = useState("");
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -79,10 +79,15 @@ const UpdateTask = () => {
     setShowDatePicker(false);
   };
 
+  const handleDeleteTask = () => {
+    removeTask(`${updateId}`);
+    router.push("/");
+  };
+
   return (
-    <div className="relative min-h-screen bg-[url(/bg.jpg)] bg-cover bg-center px-6 py-8">
+    <div className="relative min-h-screen bg-[url(/bg.jpg)] bg-cover bg-center px-2 py-8">
       <div className="absolute inset-0 bg-blue-500/50 dark:bg-gray-800/80"></div>
-      <div className="relative z-10 mx-auto h-auto w-full rounded-xl bg-white md:w-2/3 lg:w-1/2 dark:bg-gray-700">
+      <div className="relative z-10 mx-auto h-auto w-full rounded-xl bg-white md:w-2/3 lg:w-1/2 dark:bg-gray-800">
         <Header />
         <div className="flex flex-col">
           <div className="absolute">
@@ -113,6 +118,9 @@ const UpdateTask = () => {
             >
               <Check /> <p>Save Editing</p>
             </button>
+            <button onClick={handleDeleteTask}>
+              <Trash2 className="cursor-pointer text-red-400 dark:text-red-300" />
+            </button>
           </div>
           <div className="flex flex-col px-4">
             <textarea
@@ -123,7 +131,7 @@ const UpdateTask = () => {
             />
             <div className="flex items-center justify-between">
               <p className="text-[12px] text-gray-400 italic dark:text-gray-200">
-                {200 - newNote.length} characters left
+                {200 - newNote?.length} characters left
               </p>
               {error && (
                 <p
