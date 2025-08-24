@@ -141,12 +141,12 @@ const UpdateTask = () => {
               className="outline:none h-64 w-full rounded border-1 border-gray-300 p-2 text-sm focus:outline-blue-400 dark:border-gray-500"
               value={newNote}
               onChange={handleNoteTyping}
-              maxLength={100}
+              maxLength={1000}
               id="updatetextarea"
             />
             <div className="flex items-center justify-between">
               <p className="text-[12px] text-gray-400 italic dark:text-gray-200">
-                {200 - newNote?.length} characters left
+                {1000 - newNote?.length} characters left
               </p>
               {error && (
                 <p
